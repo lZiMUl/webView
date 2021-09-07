@@ -25,9 +25,3 @@ export const UpDate = Event => {
     import UpDate from 'https://raw.githubusercontent.com/lZiMUl/View/main/Main.JS';
     return UpDate;
 };
-
-export const Const = class a {
-    constructor ( _M ) {
-        return Math.random () * _M;
-    }
-}
