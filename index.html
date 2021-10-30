@@ -19,6 +19,7 @@
       window.addEventListener('load', global => {
         const url = new URL(location.href);
         const queryUrl = url.searchParams.get('url');
+        if(navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone/))
         if(queryUrl) {
           const view = document.createElement('iframe');
 
@@ -30,6 +31,8 @@
           document.body.appendChild(view);
         } else 
         document.write('Not Found Url Tag');
+        else
+        location.href = queryUrl;
       })
     </script>
   </head>
