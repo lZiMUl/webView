@@ -1,1 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Static Template</title>
+    <style>
+      html, body {
+        margin: 0;
+      }
 
+      .view {
+        margin: 0;
+        border:none;
+      }
+    </style>
+    <script>
+      window.addEventListener('load', global => {
+        const url = new URL(location.href);
+        const queryUrl = url.searchParams.get('url');
+        if(queryUrl) {
+          const view = document.createElement('iframe');
+
+          view.setAttribute('class', 'view');
+          view.setAttribute('width', screen.width);
+          view.setAttribute('height', screen.height);
+          view.setAttribute('src', queryUrl);
+
+          document.body.appendChild(view);
+        } else 
+        document.write('Not Found Url Tag');
+      })
+    </script>
+  </head>
+  <body></body>
+</html>
