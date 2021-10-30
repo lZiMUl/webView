@@ -1,1 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Static Template</title>
+    <style>
+      html, body {
+        margin: 0;
+        margin-top: 5px;
+        text-align: center;
+      }
 
+      #view {
+        margin-top: 10px;
+      }
+
+    </style>
+    <script>
+      window.addEventListener('', global => {
+        const viewFrame = document.getElementById("view");
+        let front = null;
+
+        document.getElementById("visit").addEventListener("click", () => {
+          if (front)
+          viewFrame.removeChild(front);
+
+          const view = document.createElement("iframe");
+          front = view;
+
+          view.setAttribute("src", document.getElementById("url").value);
+          view.setAttribute("width", window.innerWidth);
+          view.setAttribute("height", window.innerHeight);
+
+          viewFrame.appendChild(view);
+        })
+      })
+    </script>
+  </head>
+  <body>
+    <div>
+      <span>
+        <input id="url" />
+        <button id="visit">Visit</button>
+      </span>
+      <div id="view"></div>
+    </div>
+  </body>
+</html>
