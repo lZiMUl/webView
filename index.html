@@ -8,6 +8,14 @@
     <style>
       html, body {
         margin: 0;
+        text-align: center;
+        background-color: dimgray;
+      }
+
+      .tips {
+        color: yellow;
+        position: absolute;
+        top: 50%;
       }
 
       .view {
@@ -19,8 +27,11 @@
       window.addEventListener('load', global => {
         const url = new URL(location.href);
         const queryUrl = url.searchParams.get('url');
-        if(navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/))
+        const regexp = /(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i;
+        
+        if(navigator.userAgent.match(regexp))
         if(queryUrl) {
+          const tips = document.getElementById('tips');
           const view = document.createElement('iframe');
 
           view.setAttribute('class', 'view');
@@ -28,6 +39,7 @@
           view.setAttribute('height', screen.height);
           view.setAttribute('src', queryUrl);
 
+          tips.parentNode.removeChild(tips)
           document.body.appendChild(view);
         } else 
         document.write('Not Found Url Tag');
@@ -36,5 +48,9 @@
       })
     </script>
   </head>
-  <body></body>
+  <body>
+    <div>
+      <h1 id="tips" class="tips">Loading, please wait a moment...</h1>
+    </div>
+  </body>
 </html>
