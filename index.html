@@ -38,8 +38,8 @@
           view.setAttribute('width', screen.width);
           view.setAttribute('height', screen.height);
           view.setAttribute('src', queryUrl);
+          view.addEventListener('load', () => tips.parentNode.removeChild(tips));
 
-          tips.parentNode.removeChild(tips)
           document.body.appendChild(view);
         } else 
         document.write('Not Found Url Tag');
