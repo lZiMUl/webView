@@ -1,5 +1,3 @@
-import Alert from './customAlert.js';
-
 window.addEventListener('load', global => {
   const url = new URL(location.href);
   const queryUrl = url.searchParams.get('url');
