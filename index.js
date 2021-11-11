@@ -13,11 +13,6 @@ window.addEventListener('load', global => {
     view.setAttribute('width', screen.width);
     view.setAttribute('height', screen.height);
     view.setAttribute('src', queryUrl);
-    view.addEventListener('load', () => new Alert({
-      title: 'Load the prompt',
-      content: 'The current meeting has been loaded successfully',
-      close: 'Close'
-    }));
 
     document.body.appendChild(view);
   } else 
