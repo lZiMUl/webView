@@ -1,10 +1,8 @@
 class CreateEventListener {
 	constructor(socket, success, fail) {
-		const connectError = new Error('連接後端失敗！');
-
 		socket.addEventListener('message', ({ data }) => success(data));
-		socket.addEventListener('error', () => fail(connectError));
-		socket.addEventListener('close', () => fail(connectError));
+		socket.addEventListener('error', () => fail(new Error('An error occurred in the rear end!')));
+		socket.addEventListener('close', () => fail(new Error('An error occurred in the rear end!')));
 	}
 }
 
@@ -19,14 +17,16 @@ class Fetch extends CreateEventListener {
 					Fetch.status = true;
 					super(Fetch.client, success, fail);
 				};
-
-				Fetch.client.send(JSON.stringify({
-					url,
-					config
-				});
+				
+				Fetch.client.addEventListener('open', () => {
+					Fetch.client.send(JSON.stringify({
+						url,
+						config
+					}));
+				})
 			});
 		} else {
-			throw new Error('非法調用此方法，已忽略本次調用，請傳入參數。');
+			throw new Error('Illegal calling this method has been ignored, and this call is neglected, please enter the parameter.');
 		};
 	};
 };
